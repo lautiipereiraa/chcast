@@ -1,0 +1,3 @@
+pychromecast
+SpeechRecognition
+pyaudio
