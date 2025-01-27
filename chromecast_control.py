@@ -8,7 +8,7 @@ def conectar_chromecast(chromecast_nombre="lautizhin"):
     time.sleep(2)
 
     if not chromecasts:
-        print("No se encontraron Chromecasts")
+        print("❌ No se encontraron Chromecasts")
         return None
 
     for cc in chromecasts:
@@ -18,7 +18,7 @@ def conectar_chromecast(chromecast_nombre="lautizhin"):
             return cc
 
     pychromecast.discovery.stop_discovery(browser)
-    print(f"No se encontró un Chromecast llamado '{chromecast_nombre}'")
+    print(f"⚠️ No se encontró un Chromecast llamado '{chromecast_nombre}'")
     return None
 
 def extraer_video_id(url):
@@ -28,15 +28,15 @@ def extraer_video_id(url):
 
 def abrir_youtube(chromecast, video_url):
     if chromecast is None:
-        print("No se pudo conectar al Chromecast.")
+        print("❌ No se pudo conectar al Chromecast.")
         return
 
     video_id = extraer_video_id(video_url)
     if not video_id:
-        print("URL de YouTube no válida.")
+        print("⚠️ URL de YouTube no válida.")
         return
 
     yt = YouTubeController()
     chromecast.register_handler(yt)
     yt.play_video(video_id)
-    print(f"Reproduciendo: {video_url}")
+    print(f"🎬 Reproduciendo: {video_url}")
